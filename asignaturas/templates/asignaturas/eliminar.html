@@ -1,0 +1,16 @@
+{%  extends 'estudiante/base.html' %}   
+
+{% block principal %}
+
+    <form method="post">
+
+        {% csrf_token %}
+        <h4> Esta seguro que desea eliminar?</h4>
+
+        <input type="submit" value="eliminar">
+
+        <a href="{% url 'listar' %}">Eliminar Asignatura</a>
+        
+    </form>
+    
+{% endblock %}

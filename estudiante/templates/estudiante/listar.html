@@ -1,0 +1,39 @@
+ {%  extends 'estudiante/base.html' %}   
+
+ {% block principal %}
+ <a href="{% url 'crear_asignaturas' %}">Matricular Asignaturas</a>
+
+    <table class="table">
+        <thead>
+            <th>NOMBRE</th>
+            <th>CODIGO</th>
+            <th>EDAD</th>
+            <th>CIUDAD</th>
+            <th>ACTIVO</th>
+            <th>MATERIAS</th>
+
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{estudiante.name}}</td>
+                    <td>{{estudiante.code}}</td>
+                    <td>{{estudiante.yeardOld}}</td>
+                    <td>{{estudiante.city}}</td>
+                    {% if estudiante.activate %}
+                        <td>SI</td>
+                    {% else %}
+                        <td>NO</td>
+                    {% endif %}
+
+                    <td>
+                        <a href="{% url 'listar_asignaturas' id=estudiante.id %}">Asignaturas</a>
+
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

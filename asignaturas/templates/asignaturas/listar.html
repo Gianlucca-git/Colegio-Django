@@ -1,0 +1,35 @@
+ {%  extends 'estudiante/base.html' %}   
+
+ {% block principal %}
+ <a href="{% url 'crear' %}">Crear Asignatura</a>
+
+    <table class="table">
+        <thead>
+            <th>NOMBRE</th>
+            <th>CODIGO</th>
+            <th>CREDITOS</th>
+            <th>ACTUALIZAR</th>
+        </thead>
+        <tbody>
+            {% for asignatura in asignaturas %}
+
+                <tr>
+                    <td>{{asignatura.name}}</td>
+                    <td>{{asignatura.code}}</td>
+                    <td>{{asignatura.credits}}</td>
+
+                    <td>
+                        <a href="{% url 'actualizar' id=asignatura.id %}">Actualizar</a>
+                    </td>
+
+                    <td>
+                        <a href="{% url 'eliminar' id=asignatura.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                
+            {% endfor %}
+
+        </tbody>
+    </table>
+    
+{% endblock %}
